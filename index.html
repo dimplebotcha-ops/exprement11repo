@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hotel Room Booking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .confirmation {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Hotel Room Booking</h2>
+
+    <label for="name">Guest Name:</label>
+    <input type="text" id="name" required>
+
+    <label for="roomType">Room Type:</label>
+    <select id="roomType">
+      <option value="Single">Single</option>
+      <option value="Double">Double</option>
+      <option value="Suite">Suite</option>
+    </select>
+
+    <label for="checkIn">Check-in Date:</label>
+    <input type="date" id="checkIn">
+
+    <label for="checkOut">Check-out Date:</label>
+    <input type="date" id="checkOut">
+
+    <button onclick="bookRoom()">Book Now</button>
+
+    <div id="confirmation" class="confirmation"></div>
+  </div>
+
+  <script>
+    function bookRoom() {
+      const name = document.getElementById('name').value;
+      const roomType = document.getElementById('roomType').value;
+      const checkIn = document.getElementById('checkIn').value;
+      const checkOut = document.getElementById('checkOut').value;
+      const confirmationDiv = document.getElementById('confirmation');
+
+      if (!name || !checkIn || !checkOut) {
+        alert("Please fill out all fields.");
+        return;
+      }
+
+      confirmationDiv.style.display = 'block';
+      confirmationDiv.innerHTML = `
+        ✅ Booking Confirmed! <br><br>
+        Guest: <strong>${name}</strong><br>
+        Room Type: <strong>${roomType}</strong><br>
+        Check-in: <strong>${checkIn}</strong><br>
+        Check-out: <strong>${checkOut}</strong><br>
+        Thank you for booking with us!
+      `;
+    }
+  </script>
+
+</body>
+</html>
